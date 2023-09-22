@@ -83,25 +83,25 @@ function reload-profile {
 $basePath = "C:\msys64\usr\bin"
 # List of program names (excluding the base path)
 $UnixEssentialsForWindows = @(
-    "mkdir.exe", "rmdir.exe", "ln.exe", "chown.exe",
-    "chmod.exe", "dd.exe", "df.exe", "du.exe",
-    "tar.exe", "less.exe", "find.exe", "grep.exe",
-    "sed.exe", "awk.exe", "umount.exe", "time.exe",
-    "mktemp.exe", "mknod.exe", "truncate.exe", "basenc.exe",
-    "cut.exe", "tr.exe", "od.exe", "uniq.exe",
-    "comm.exe", "head.exe", "join.exe", "md5sum.exe",
-    "tail.exe", "wc.exe", "strings.exe", "column.exe",
-    "xargs.exe", "iconv.exe", "file.exe", "sha1sum.exe", 
+    "mkdir.exe",     "ln.exe",        "chown.exe",     "chmod.exe",
+    "dd.exe",        "df.exe",        "du.exe",        "tar.exe",
+    "less.exe",      "find.exe",      "grep.exe",      "sed.exe",
+    "awk.exe",       "umount.exe",    "time.exe",      "mktemp.exe",
+    "mknod.exe",     "truncate.exe",  "basenc.exe",    "cmp.exe",
+    "cut.exe",       "tr.exe",        "od.exe",        "uniq.exe",
+    "comm.exe",      "head.exe",      "join.exe",      "md5sum.exe",
+    "tail.exe",      "wc.exe",        "strings.exe",   "column.exe",
+    "xargs.exe",     "iconv.exe",     "file.exe",      "sha1sum.exe", 
     "sha256sum.exe", "sha512sum.exe", "sha224sum.exe", "sha384sum.exe",
-    "which.exe", "touch.exe", "split.exe", "paste.exe", 
-    "env.exe", "date.exe", "whoami.exe", "tty.exe",
-    "stat.exe", "seq.exe", "pr.exe", "nl.exe",
-    "nohup.exe", "nice.exe", "shuf.exe", "dirname.exe",
-    "basename.exe", "factor.exe", "yes.exe", "curl.exe", 
-    "wget.exe", "gzip.exe", "bzip2.exe", "bzcat.exe",
-    "tac.exe", "rev.exe", "printenv.exe", "locate.exe",
-    "hexdump.exe", "fold.exe", "expand.exe", "expr.exe",
-    "cal.exe", "patch.exe", "cmp.exe"
+    "which.exe",     "touch.exe",     "split.exe",     "paste.exe", 
+    "env.exe",       "date.exe",      "whoami.exe",    "tty.exe",
+    "stat.exe",      "seq.exe",       "pr.exe",        "nl.exe",
+    "nohup.exe",     "nice.exe",      "shuf.exe",      "dirname.exe",
+    "basename.exe",  "factor.exe",    "yes.exe",       "curl.exe", 
+    "wget.exe",      "gzip.exe",      "bzip2.exe",     "bzcat.exe",
+    "tac.exe",       "rev.exe",       "printenv.exe",  "locate.exe",
+    "hexdump.exe",   "fold.exe",      "expand.exe",    "expr.exe",
+    "cal.exe",       "patch.exe"
 )
 
 $UnixEssentialsForWindows | ForEach-Object {
@@ -111,6 +111,9 @@ $UnixEssentialsForWindows | ForEach-Object {
         Set-Alias -Name $aliasName -Value $fullPath
     }
 }
+
+Remove-Variable basePath
+Remove-Variable UnixEssentialsForWindows
 
 ## Final Line to set prompt
 oh-my-posh init pwsh --config https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/cobalt2.omp.json | Invoke-Expression
